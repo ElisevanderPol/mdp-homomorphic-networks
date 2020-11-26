@@ -4,6 +4,8 @@ import torch
 from rlpyt.models.mlp import MlpModel
 from rlpyt.models.utils import conv2d_output_shape
 
+from symmetrizer.nn.modules import GlobalAveragePool
+
 
 class Conv2dModel(torch.nn.Module):
 
@@ -16,6 +18,7 @@ class Conv2dModel(torch.nn.Module):
             paddings=None,
             nonlinearity=torch.nn.ReLU,  # Module, not Functional.
             use_maxpool=False,  # if True: convs use stride 1, maxpool downsample.
+            use_avgpool=False,
             head_sizes=None,  # Put an MLP head on top.
             ):
         super().__init__()
@@ -38,6 +41,9 @@ class Conv2dModel(torch.nn.Module):
             if maxp_stride > 1:
                 sequence.append(torch.nn.MaxPool2d(maxp_stride))  # No padding.
         self.global_pool = False
+        if use_avgpool:
+            self.global_pool = True
+            sequence.append(GlobalAveragePool())
         self.conv = torch.nn.Sequential(*sequence)
 
     def forward(self, input):
@@ -72,6 +78,7 @@ class Conv2dHeadModel(torch.nn.Module):
             paddings=None,
             nonlinearity=torch.nn.ReLU,
             use_maxpool=False,
+            use_avgpool=False,
             ):
         super().__init__()
         c, h, w = image_shape
@@ -83,6 +90,7 @@ class Conv2dHeadModel(torch.nn.Module):
             paddings=paddings,
             nonlinearity=nonlinearity,
             use_maxpool=use_maxpool,
+            use_avgpool=use_avgpool
         )
         conv_out_size = self.conv.conv_out_size(h, w)
         if hidden_sizes or output_size:
