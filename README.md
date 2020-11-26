@@ -42,7 +42,7 @@ If you only need the code to build equivariant network layers, see our
   * ```clone``` the Symmetrizer repo and ```cd``` into it
   * ``` pip install gym==0.17 ```
   * ``` pip install -e . ```
- * Optionally: Install the [grid world environment](https://github.com/ElisevanderPol/gridworld "Grid world environment") in the same rlpyt env:
+* Optionally: Install the [grid world environment](https://github.com/ElisevanderPol/gridworld "Grid world environment") in the same rlpyt env:
   * ```clone``` the grid world environment and ```cd``` into it
   * ``` pip install -e . ```
 * See if the Symmetrizer works:
