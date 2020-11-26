@@ -50,9 +50,9 @@ If you only need the code to build equivariant network layers, see our
 
 ## Usage
 * ``` cd examples ```
-* ``` ./scripts/test_cartpole.sh ```
-or 
-*``` ./scripts/test_gridworld.sh ```
+* ``` ./scripts/test_cartpole.sh ``` 
+or
+* ``` ./scripts/test_gridworld.sh ```
 
 ## Visualize
 * ``` pip install ipykernel ```
