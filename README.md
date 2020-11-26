@@ -50,8 +50,10 @@ If you only need the code to build equivariant network layers, see our
 
 ## Usage
 * ``` cd examples ```
-* ``` ./scripts/test_cartpole.sh ``` 
-* Or ``` ./scripts/test_gridworld.sh ```
+* CartPole:
+ * ``` ./scripts/test_cartpole.sh ``` 
+* Grid world:
+ * ``` ./scripts/test_gridworld.sh ```
 
 ## Visualize
 * ``` pip install ipykernel ```
