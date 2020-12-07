@@ -61,13 +61,11 @@ def build_and_train(env_id="GridEnv-v1", run_ID=0, cuda_idx=None,
     )
 
 
-    config = dict(env_id=env_id, lr=args.lr, debug=False, network=args.network,
+    config = dict(env_id=env_id, lr=args.lr, network=args.network,
                   fcs=str(args.fcs), channels=args.channels,
                   strides=args.strides, paddings=args.paddings)
     name = f"{args.folder}_{args.network}"
     log_dir = f"{args.folder}_{args.network}"
-    if args.debug:
-        config['debug'] = True
     with logger_context(log_dir, run_ID, name, config):
         runner.train()
 
@@ -90,8 +88,6 @@ if __name__ == "__main__":
     parser.add_argument('--cuda_idx', help='gpu to use ', type=int, default=None)
     parser.add_argument('--sample_mode', help='serial or parallel sampling',
                         type=str, default='serial', choices=['serial', 'cpu', 'gpu', 'alternating'])
-    parser.add_argument('--debug', help='Debug mode', action='store_true',
-                        default=False)
     parser.add_argument('--n_parallel', help='number of sampler workers', type=int, default=2)
     args = parser.parse_args()
     build_and_train(
