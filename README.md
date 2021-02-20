@@ -59,7 +59,7 @@ If you only need the code to build equivariant network layers, see our
 * ``` pip install ipykernel ```
 * ``` cd data/local ```
 * ``` jupyter notebook ```
-* Open ```Cartpole.ipynb```
+* Open ```Cartpole.ipynb``` or ```Grid world.ipynb```
 
 ### Cite
 If you use this code in your own work, please cite our paper:
